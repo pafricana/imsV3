@@ -1,0 +1,130 @@
+// Remove any globally added headers
+.rating-header,
+.rating-labels,
+.rating-1,
+.rating-2,
+[class*="rating"],
+[class*="RATING"] {
+  display: none !important;
+}
+
+table.topic-list {
+  // Style all rating columns and headers
+  td.posters,
+  td.posts,
+  td.activity {
+    width: 100px !important;
+    text-align: center !important;
+    display: table-cell !important;
+    vertical-align: middle !important;
+    padding: 15px 0 !important;
+    
+    // Style for star rating containers
+    .star-rating-container {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      gap: 2px !important;
+    }
+  }
+
+  // Style the headers
+  th.posters,
+  th.posts,
+  th.activity {
+    width: 100px !important;
+    text-align: center !important;
+    background-color: white !important;
+    border-bottom: 2px solid #e9e9e9 !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    color: #333 !important;
+
+    button {
+      display: none !important;
+    }
+  }
+
+  // Force header text
+  th.posters:after {
+    content: "Importance" !important;
+    display: block !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    color: #333 !important;
+  }
+  
+  th.posts:after {
+    content: "Feasibility" !important;
+    display: block !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    color: #333 !important;
+  }
+
+  th.activity:after {
+    content: "Sort" !important;
+    display: block !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    color: #333 !important;
+  }
+
+  // Hide unwanted elements
+  th.views,
+  td.views,
+  th.replies,
+  td.replies {
+    display: none !important;
+    width: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  // Hide additional elements
+  .avatar,
+  .posts-map,
+  .number,
+  .relative-date,
+  .post-activity {
+    display: none !important;
+  }
+
+  // Star styling
+  .star-rating-container {
+    .star {
+      cursor: pointer !important;
+      transition: transform 0.1s !important;
+      font-size: 20px !important;
+
+      &:hover {
+        transform: scale(1.1) !important;
+      }
+
+      svg {
+        width: 20px !important;
+        height: 20px !important;
+      }
+
+      &.filled {
+        color: gold !important;
+      }
+
+      &:not(.filled) {
+        color: #ccc !important;
+      }
+    }
+  }
+
+  // Radio buttons for Sort
+  td.activity:after {
+    content: "○ ○ ○ ○ ○" !important;
+    color: #666 !important;
+    font-size: 20px !important;
+    letter-spacing: 4px !important;
+    display: block !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+    padding: 0 10px !important;
+  }
+}

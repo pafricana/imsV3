@@ -1,0 +1,16 @@
+<div class="star-rating-container">
+  {{#each this.stars as |star|}}
+    <span 
+      class="star {{if (lte star this.displayRating) 'filled'}}"
+      role="button"
+      {{on "mouseenter" (fn this.setHoverRating star)}}
+      {{on "mouseleave" this.clearHoverRating}}
+      {{on "click" (fn this.setRating star)}}>
+      {{#if (lte star this.displayRating)}}
+        {{d-icon "star"}}
+      {{else}}
+        {{d-icon "far-star"}}
+      {{/if}}
+    </span>
+  {{/each}}
+</div>

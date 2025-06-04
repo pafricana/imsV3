@@ -1,0 +1,10 @@
+{{#each this.stars as |star|}}
+  <span 
+    class="star {{if (lte star (or this.hoveredRating this.rating)) 'filled'}}"
+    role="button"
+    {{on "mouseenter" (fn this.setHovered star)}}
+    {{on "mouseleave" this.clearHovered}}
+    {{on "click" (fn this.setRating star)}}>
+    ★
+  </span>
+{{/each}}
