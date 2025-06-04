@@ -1,28 +1,24 @@
-import { apiInitializer } from "discourse/lib/api";
+export default function initializeRatingColumns(api) {
+  // Add custom fields
+  api.addDiscoveryQueryParam('importance', { replace: true });
+  api.addDiscoveryQueryParam('feasibility', { replace: true });
 
-export default apiInitializer("1.34", (api) => {
-  api.registerValueTransformer("topic-list-columns", ({ value: columns }) => {
-    // Remove views
-    columns.delete("views");
-    
-    // Move importance to posters column
-    columns.replace("posters", {
-      header: { template: "Importance" },
-      item: columns.get("replies").item
-    });
-    
-    // Move feasibility to replies column
-    columns.replace("replies", {
-      header: { template: "Feasibility" },
-      item: columns.get("activity").item
-    });
-    
-    // Keep activity column for potential Sort rating
-    columns.replace("activity", {
-      header: { template: "Sort" },
-      item: columns.get("activity").item
-    });
-
-    return columns;
+  // Add columns to topic list
+  api.modifyClassStatic('model:topic-list', {
+    importanceField: ['importance'],
+    feasibilityField: ['feasibility']
   });
-});
+
+  // Add columns
+  api.addColumnAfter("title", {
+    id: "importance",
+    name: "Importance",
+    sortProperty: "importance"
+  });
+
+  api.addColumnAfter("importance", {
+    id: "feasibility",
+    name: "Feasibility",
+    sortProperty: "feasibility"
+  });
+}
