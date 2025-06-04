@@ -1,29 +1,21 @@
-import Component from "@ember/component";
-import { action } from "@ember/object";
+import Component from "@glimmer/component";
 import { tracked } from "@glimmer/tracking";
+import { action } from "@ember/object";
 
 export default class StarRating extends Component {
-  @tracked stars = [1, 2, 3, 4, 5];
-  @tracked hoverRating = null;
-  
-  get displayRating() {
-    return this.hoverRating || this.args.rating || 0;
+  @tracked rating;
+
+  get stars() {
+    return Array.from({ length: 5 }, (_, i) => ({
+      value: i + 1,
+      filled: (i + 1) <= (this.args.rating || 0)
+    }));
   }
 
   @action
-  setHoverRating(rating) {
-    this.hoverRating = rating;
-  }
-
-  @action
-  clearHoverRating() {
-    this.hoverRating = null;
-  }
-
-  @action
-  setRating(rating) {
-    if (this.args.onRating) {
-      this.args.onRating(rating);
+  setRating(value) {
+    if (this.args.onChange) {
+      this.args.onChange(value);
     }
   }
 }
