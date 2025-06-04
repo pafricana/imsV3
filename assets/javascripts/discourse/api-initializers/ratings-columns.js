@@ -1,24 +1,23 @@
-export default function initializeRatingColumns(api) {
-  // Add custom fields
-  api.addDiscoveryQueryParam('importance', { replace: true });
-  api.addDiscoveryQueryParam('feasibility', { replace: true });
+export default {
+  name: "ratings-columns",
+  initialize(container) {
+    const store = container.lookup("service:store");
+    const site = container.lookup("service:site");
+    
+    site.set("topics_columns", [
+      ...site.topics_columns,
+      {
+        name: "importance",
+        title: "Importance",
+        component: "star-rating"
+      },
+      {
+        name: "feasibility",
+        title: "Feasibility",
+        component: "star-rating"
+      }
+    ]);
 
-  // Add columns to topic list
-  api.modifyClassStatic('model:topic-list', {
-    importanceField: ['importance'],
-    feasibilityField: ['feasibility']
-  });
-
-  // Add columns
-  api.addColumnAfter("title", {
-    id: "importance",
-    name: "Importance",
-    sortProperty: "importance"
-  });
-
-  api.addColumnAfter("importance", {
-    id: "feasibility",
-    name: "Feasibility",
-    sortProperty: "feasibility"
-  });
+    store.addPlural("topic-rating");
+  }
 }
