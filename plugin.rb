@@ -2,7 +2,7 @@
 # about: Adds star ratings to topics
 # version: 0.1
 # authors: Your Name
-# url: https://github.com/yourusername/discourse-ratings
+# url: https://github.com/pafricana/ratings
 
 enabled_site_setting :discourse_ratings_enabled
 
