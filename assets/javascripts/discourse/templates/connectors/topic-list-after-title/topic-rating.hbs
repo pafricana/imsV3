@@ -1,6 +1,10 @@
-{{star-rating 
-  rating=topic.ratings.importance 
-  onRating=(action "setRating" topic.id "importance")}}
-{{star-rating 
-  rating=topic.ratings.feasibility 
-  onRating=(action "setRating" topic.id "feasibility")}}
+<div class="topic-rating">
+  {{star-rating
+    rating=topic.ratings.importance
+    onChange=(action "updateImportance")
+  }}
+  {{star-rating
+    rating=topic.ratings.feasibility
+    onChange=(action "updateFeasibility")
+  }}
+</div>
