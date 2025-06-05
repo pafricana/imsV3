@@ -1,4 +1,4 @@
-# name: discourse-ratings
+# name: discourse-imsV3
 # about: Adds star ratings to topics
 # version: 0.1
 # authors: Your Name
