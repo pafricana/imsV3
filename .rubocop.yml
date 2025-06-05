@@ -1,1 +1,17 @@
 inherit_from: https://raw.githubusercontent.com/discourse/discourse/master/.rubocop.yml
+
+AllCops:
+  TargetRubyVersion: 2.7
+  DisabledByDefault: true
+  Exclude:
+    - 'db/schema.rb'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'
+    - 'public/**/*'
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  EnforcedStyle: always
+
+Bundler/OrderedGems:
+  Enabled: true
