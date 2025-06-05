@@ -1,4 +1,11 @@
-*.log
-*.swp
 .DS_Store
 node_modules/
+coverage/
+dist/
+tmp/
+*.swp
+*.swo
+.idea/
+.vscode/
+*.iml
+yarn-error.log

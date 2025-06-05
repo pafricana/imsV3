@@ -1,0 +1,11 @@
+<div class="rating-stars">
+  {{#each this.starRange as |star|}}
+    <span
+      class="star {{if (lte @value star) 'filled'}}"
+      role="button"
+      {{on "click" (fn this.onRate star)}}
+    >
+      ★
+    </span>
+  {{/each}}
+</div>

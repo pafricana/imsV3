@@ -1,16 +1,15 @@
 {
   "name": "imsv3",
   "version": "1.0.0",
-  "description": "IMS v3 plugin for Discourse",
-  "author": "Your Name",
-  "license": "MIT",
+  "private": true,
   "devDependencies": {
+    "@babel/core": "^7.14.6",
+    "@babel/eslint-parser": "^7.14.7",
+    "@ember/test-helpers": "^2.4.0",
+    "ember-template-lint": "^4.0.0",
     "eslint": "^7.32.0",
     "eslint-config-discourse": "^3.1.0",
     "prettier": "^2.5.1",
     "qunit": "^2.17.2"
-  },
-  "scripts": {
-    "test": "qunit test/javascripts/**/*-test.js"
   }
 }
