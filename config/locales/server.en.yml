@@ -1,1 +1,3 @@
 en:
+  site_settings:
+    imsv3_enabled: "Enable IMS v3 plugin features"

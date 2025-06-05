@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # name: imsV3
 # about: Adds star ratings to topics
 # version: 0.1
