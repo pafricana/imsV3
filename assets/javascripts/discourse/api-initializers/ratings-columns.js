@@ -1,11 +1,12 @@
 export default {
   name: "ratings-columns",
   initialize(container) {
-    const store = container.lookup("service:store");
     const site = container.lookup("service:site");
+    if (!site.topics_columns) {
+      site.set("topics_columns", []);
+    }
     
-    site.set("topics_columns", [
-      ...site.topics_columns,
+    site.topics_columns.pushObjects([
       {
         name: "importance",
         title: "Importance",
@@ -17,8 +18,5 @@ export default {
         component: "star-rating"
       }
     ]);
-
-    store.addPlural("topic-rating");
   }
 }
-
