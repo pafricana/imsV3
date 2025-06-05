@@ -1,4 +1,5 @@
 import { withPluginApi } from "discourse/lib/plugin-api";
+import { strict as templateMode } from "discourse/lib/ember-template";
 
 export default {
   name: "ratings-columns",
