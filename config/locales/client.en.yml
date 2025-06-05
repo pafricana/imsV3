@@ -2,3 +2,6 @@ en:
   js:
     imsv3:
       title: "IMS v3"
+      importance: "Importance"
+      feasibility: "Feasibility"
+      sort: "Sort"

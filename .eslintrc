@@ -1,1 +1,7 @@
-[... content as shown above ...]
+{
+  "extends": "discourse",
+  "rules": {
+    "no-console": "off",
+    "semi": ["error", "always"]
+  }
+}
