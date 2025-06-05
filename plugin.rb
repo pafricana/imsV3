@@ -9,10 +9,16 @@
 enabled_site_setting :imsv3_enabled
 register_asset "stylesheets/ratings.scss"
 
+module ::ImsV3
+  PLUGIN_NAME = "imsv3"
+end
+
+require_relative "lib/imsv3/engine"
+
 after_initialize do
   module ::ImsV3
     class Engine < ::Rails::Engine
-      engine_name "imsv3"
+      engine_name ImsV3::PLUGIN_NAME
       isolate_namespace ImsV3
     end
   end
