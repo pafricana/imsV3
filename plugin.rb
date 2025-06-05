@@ -9,32 +9,6 @@
 enabled_site_setting :imsv3_enabled
 register_asset "stylesheets/ratings.scss"
 
-module ::ImsV3
-  PLUGIN_NAME = "imsv3"
-end
-
-require_relative "lib/imsv3/engine"
-
 after_initialize do
-  module ::ImsV3
-    class Engine < ::Rails::Engine
-      engine_name ImsV3::PLUGIN_NAME
-      isolate_namespace ImsV3
-    end
-  end
-
-  class ::TopicRating < ActiveRecord::Base
-    belongs_to :user
-    belongs_to :topic
-    belongs_to :category
-    
-    validates :user_id, presence: true
-    validates :topic_id, presence: true
-    validates :rating_type, presence: true
-    validates :value, numericality: { 
-      only_integer: true,
-      greater_than_or_equal_to: 1,
-      less_than_or_equal_to: 5
-    }
-  end
+  Topic.register_custom_field_type('rating', :integer)
 end
