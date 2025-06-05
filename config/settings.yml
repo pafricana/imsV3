@@ -1,10 +1,3 @@
-plugins:
-  discourse_ratings_enabled:
-    default: true
-    client: true
-  discourse_ratings_show_in_topic:
-    default: true
-    client: true
-  discourse_ratings_allow_multiple:
-    default: true
-    client: true
+ratings_enabled:
+  default: true
+  client: true
