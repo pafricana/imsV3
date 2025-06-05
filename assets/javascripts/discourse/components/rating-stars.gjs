@@ -1,14 +1,10 @@
 import Component from "@glimmer/component";
-import { tracked } from "@glimmer/tracking";
 import { on } from "@ember/modifier";
-import { fn } from "@ember/helper";
 
 export default class RatingStars extends Component {
-  @tracked rating;
-
   <template>
     <div class="rating-stars">
-      {{#each this.starRange as |star|}}
+      {{#each (array 1 2 3 4 5) as |star|}}
         <span
           class="star {{if (lte @value star) 'filled'}}"
           role="button"
@@ -19,8 +15,4 @@ export default class RatingStars extends Component {
       {{/each}}
     </div>
   </template>
-
-  get starRange() {
-    return [1, 2, 3, 4, 5];
-  }
 }
