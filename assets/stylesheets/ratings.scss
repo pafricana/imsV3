@@ -6,9 +6,8 @@ table.topic-list {
     text-align: center !important;
     display: table-cell !important;
     vertical-align: middle !important;
-    padding-top: 15px !important;
-    padding-bottom: 15px !important;
-    
+    padding: 15px 5px !important;
+
     > * {
       display: none !important;
     }
@@ -19,7 +18,7 @@ table.topic-list {
   th.activity {
     width: 100px !important;
     text-align: center !important;
-    background-color: white !important;
+    background-color: #fff !important;
     border-bottom: 2px solid #e9e9e9 !important;
     font-size: 14px !important;
     font-weight: bold !important;
@@ -37,12 +36,20 @@ table.topic-list {
     display: none !important;
   }
 
-  th.posters:after { content: "Importance" !important; }
-  th.posts:after { content: "Feasibility" !important; }
-  th.activity:after { content: "Sort" !important; }
+  th.posters::after {
+    content: "Importance" !important;
+  }
 
-  td.posters:after,
-  td.posts:after {
+  th.posts::after {
+    content: "Feasibility" !important;
+  }
+
+  th.activity::after {
+    content: "Sort" !important;
+  }
+
+  td.posters::after,
+  td.posts::after {
     content: "★★★★★" !important;
     color: #ccc !important;
     font-size: 20px !important;

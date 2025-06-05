@@ -3,7 +3,7 @@ import { withPluginApi } from "discourse/lib/plugin-api";
 export default {
   name: "ratings-columns",
   initialize() {
-    withPluginApi("0.8.31", (api) => {
+    withPluginApi("1.6.0", (api) => {
       const site = api.container.lookup("service:site");
       
       if (!site.topic_list_columns) {
@@ -12,13 +12,16 @@ export default {
       
       site.topic_list_columns.pushObjects([{
         name: "importance",
-        title: "Importance"
+        title: "Importance",
+        hidden: false
       }, {
         name: "feasibility",
-        title: "Feasibility"
+        title: "Feasibility",
+        hidden: false
       }, {
         name: "sort",
-        title: "Sort"
+        title: "Sort",
+        hidden: false
       }]);
     });
   }
