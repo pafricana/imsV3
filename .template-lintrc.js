@@ -1,8 +1,12 @@
 module.exports = {
-  extends: "discourse:recommended",
+  extends: "ember-template-lint:recommended",
+  plugins: ["ember-template-lint-plugin-discourse"],
   rules: {
-    "no-implicit-this": true,
+    "no-implicit-this": {
+      allow: ["stars", "sortValue"]
+    },
     "no-html-comments": true,
-    "no-invalid-interactive": false
+    "no-inline-styles": false,
+    "require-input-label": false
   }
 };

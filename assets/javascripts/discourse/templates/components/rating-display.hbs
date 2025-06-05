@@ -1,0 +1,10 @@
+{{! template-lint-disable no-implicit-this }}
+<div class="rating-display">
+  {{#if @isImportance}}
+    <span class="importance-stars">{{this.stars}}</span>
+  {{else if @isFeasibility}}
+    <span class="feasibility-stars">{{this.stars}}</span>
+  {{else}}
+    <span class="sort-options">{{this.sortValue}}</span>
+  {{/if}}
+</div>
