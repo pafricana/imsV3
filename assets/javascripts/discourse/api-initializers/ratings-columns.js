@@ -10,7 +10,7 @@ export default {
         site.set("topic_list_columns", []);
       }
       
-      site.topic_list_columns.pushObjects([{
+      const columns = [{
         name: "importance",
         title: "Importance",
         hidden: false
@@ -22,7 +22,9 @@ export default {
         name: "sort",
         title: "Sort",
         hidden: false
-      }]);
+      }];
+
+      site.topic_list_columns.pushObjects(columns);
     });
   }
 };
