@@ -1,14 +1,22 @@
 # frozen_string_literal: true
 
-# name: imsV3
+# name: imsv3
 # about: Adds star ratings to topics
 # version: 0.1
 # authors: Your Name
 # url: https://github.com/pafricana/imsV3
 
+enabled_site_setting :imsv3_enabled
 register_asset "stylesheets/ratings.scss"
 
 after_initialize do
+  module ::ImsV3
+    class Engine < ::Rails::Engine
+      engine_name "imsv3"
+      isolate_namespace ImsV3
+    end
+  end
+
   class ::TopicRating < ActiveRecord::Base
     belongs_to :user
     belongs_to :topic

@@ -1,15 +1,20 @@
 # frozen_string_literal: true
 
-# Parts of the core features examples can be skipped like so:
-#   it_behaves_like "having working core features", skip_examples: %i[login likes]
-#
-# List of keywords for skipping examples:
-# login, likes, profile, topics, topics:read, topics:reply, topics:create,
-# search, search:quick_search, search:full_page
-#
-# For more details, see https://meta.discourse.org/t/-/361381
-RSpec.describe "Core features", type: :system do
-  before { enable_current_plugin }
+require "rails_helper"
 
-  it_behaves_like "having working core features"
+describe "IMS v3", type: :system do
+  fab!(:topic) { Fabricate(:topic) }
+  fab!(:user) { Fabricate(:user) }
+
+  before do
+    SiteSetting.imsv3_enabled = true
+    sign_in(user)
+  end
+
+  it "shows rating columns" do
+    visit "/latest"
+    expect(page).to have_content("Importance")
+    expect(page).to have_content("Feasibility")
+    expect(page).to have_content("Sort")
+  end
 end
