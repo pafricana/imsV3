@@ -4,8 +4,12 @@ require File.expand_path("../../config/environment", __FILE__)
 require "rails/test_help"
 require "mocha/minitest"
 
-class ActiveSupport::TestCase
-  setup do
+module TestHelper
+  def setup_discourse
     SiteSetting.imsv3_enabled = true
   end
+end
+
+class ActiveSupport::TestCase
+  include TestHelper
 end
