@@ -1,0 +1,51 @@
+name: Plugin Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    name: ${{ matrix.build_type }}
+    runs-on: ubuntu-latest
+    container: discourse/discourse_test:release
+    timeout-minutes: 60
+
+    env:
+      DISCOURSE_HOSTNAME: www.example.com
+      RUBY_GLOBAL_METHOD_CACHE_SIZE: 131072
+      RAILS_ENV: test
+      PGHOST: postgres
+      PGUSER: discourse
+      PGPASSWORD: discourse
+
+    strategy:
+      fail-fast: false
+      matrix:
+        build_type: ["frontend", "backend"]
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: discourse/discourse
+          fetch-depth: 1
+
+      - name: Install plugin
+        uses: actions/checkout@v3
+        with:
+          path: plugins/imsv3
+
+      - name: Setup Git
+        run: |
+          git config --global user.email "ci@ci.invalid"
+          git config --global user.name "Discourse CI"
+
+      - name: Run ${{ matrix.build_type }} tests
+        run: |
+          if [ "${{ matrix.build_type }}" = "frontend" ]; then
+            bundle exec rake plugin:qunit['imsv3']
+          else
+            bundle exec rake plugin:spec['imsv3']
+          fi
