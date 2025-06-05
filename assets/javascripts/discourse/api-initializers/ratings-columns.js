@@ -1,21 +1,25 @@
 export default {
   name: "ratings-columns",
   initialize(container) {
+    const store = container.lookup("service:store");
     const site = container.lookup("service:site");
-    if (!site.topics_columns) {
-      site.set("topics_columns", []);
+    
+    if (!site.get("topic_list_columns")) {
+      site.set("topic_list_columns", []);
     }
     
-    site.topics_columns.pushObjects([
+    site.topic_list_columns.pushObjects([
       {
         name: "importance",
-        title: "Importance",
-        component: "star-rating"
+        heading: "Importance"
       },
       {
         name: "feasibility",
-        title: "Feasibility",
-        component: "star-rating"
+        heading: "Feasibility"
+      },
+      {
+        name: "sort",
+        heading: "Sort"
       }
     ]);
   }

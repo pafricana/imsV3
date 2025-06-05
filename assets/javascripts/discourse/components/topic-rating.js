@@ -14,7 +14,7 @@ export default class TopicRating extends Component {
   @action
   async setRating(newRating) {
     try {
-      await ajax(`/topics/${this.args.topicId}/rate`, {
+      await ajax(`/topics/${this.args.topic.id}/rate`, {
         type: "POST",
         data: {
           rating_type: this.args.type,
